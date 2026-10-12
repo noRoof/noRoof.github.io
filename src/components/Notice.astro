@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Arrow from './Arrow.astro';
+import { ui, homePath, type Locale } from '../lib/i18n';
+import { containerCode } from '../lib/iso6346';
+
+interface Props {
+  locale: Locale;
+  kind: 'thanks' | 'notFound';
+  alternate: string;
+}
+const { locale, kind, alternate } = Astro.props;
+const t = ui[locale][kind];
+const code = kind === 'thanks' ? containerCode('NRD', '000200') : containerCode('NRD', '000404');
+const stamp = kind === 'thanks' ? ui[locale].thanks.stamp : '404';
+---
+
+<Base locale={locale} title={`${t.title} — noRoof development`} alternate={alternate} noindex>
+  <section class="notice wrap">
+    <div class="slip">
+      <h1>{t.title}</h1>
+      <p class="body">{t.body}</p>
+      <a class="seal" href={homePath(locale)}>{t.back}<Arrow /></a>
+      <div class="slip-foot" aria-hidden="true">
+        <p class="slip-code data">{code}</p>
+        <p class="stamp data">{stamp}</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notice {
+    padding-block: clamp(4rem, 12vw, 9rem);
+    display: grid;
+    place-items: center;
+  }
+  .slip {
+    position: relative;
+    width: min(100%, 40rem);
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: 0 1.25rem 2.5rem -1.75rem rgb(27 33 31 / 0.6);
+    overflow: hidden;
+  }
+  .slip-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+  }
+  .slip-code {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+  .body {
+    font-size: 1.1875rem;
+    color: var(--paper-ink-soft);
+  }
+  .seal {
+    justify-self: start;
+  }
+  .stamp {
+    margin: 0;
+    padding: 0.4rem 0.9rem;
+    border: 3px solid var(--box);
+    color: var(--box);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transform: rotate(-8deg);
+  }
+</style>

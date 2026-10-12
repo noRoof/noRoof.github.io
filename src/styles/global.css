@@ -1,0 +1,209 @@
+@import '@fontsource-variable/big-shoulders-stencil/standard.css';
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/red-hat-mono/500.css';
+@import '@fontsource/red-hat-mono/700.css';
+
+:root {
+  /* quay */
+  --quay: #dcdad3;
+  --quay-deep: #cfccc3;
+  --ink: #1b211f;
+  --ink-2: #2a302d;
+  --ink-3: #3b423f;
+  --ink-soft: #4a524e;
+  /* manifest paper */
+  --paper: #f7f7f3;
+  --paper-ink-soft: #55605a;
+  --rule: #b8b5ab;
+  /* container steel, from the logo green */
+  --box: #17803a;
+  --box-dark: #126b30;
+  --box-light: #1a8f41;
+  --box-ink: #f7f7f3;
+  /* the seal: the only accent and every action */
+  --seal: #1fc83d;
+  --seal-press: #19ad34;
+  --seal-ink: #0b1a10;
+  --signal: #49ee46;
+  --on-dark-soft: #b9c0bc;
+  /* plate */
+  --plate: #c9cbc7;
+
+  --font-display: 'Big Shoulders Stencil Variable', 'Arial Narrow', sans-serif;
+  --font-body: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-data: 'Red Hat Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --max: 83rem;
+  --rail-h: 4rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* corrugated steel: the world's own surface */
+  --corrugation: repeating-linear-gradient(
+    90deg,
+    var(--box) 0 1.375rem,
+    var(--box-dark) 1.375rem 1.875rem,
+    var(--box-light) 1.875rem 2.75rem
+  );
+
+  color-scheme: light;
+  scroll-padding-top: calc(var(--rail-h) + 1rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--ink-3) var(--quay);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--quay);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-stretch: 100%;
+  caret-color: var(--box);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--seal);
+  color: var(--seal-ink);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 850;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.22em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--seal);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.data {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  z-index: 100;
+  background: var(--seal);
+  color: var(--seal-ink);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+.skip:focus {
+  top: 0.75rem;
+}
+
+/* The seal: one green action across the whole yard */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--seal);
+  color: var(--seal-ink);
+  border: 2px solid var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-stretch: 112%;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+.seal:hover {
+  background: var(--seal-press);
+}
+.seal:active {
+  transform: translateY(1px);
+}
+.seal svg {
+  flex: none;
+  transition: transform 220ms var(--ease-out);
+}
+.seal:hover svg {
+  transform: translateX(3px);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+.section-head {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  max-width: 52rem;
+}
+.section-head h2 {
+  font-size: clamp(3rem, 7.5vw, 6rem);
+}
+.section-head p {
+  font-size: 1.1875rem;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}

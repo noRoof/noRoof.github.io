@@ -1,0 +1,448 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { ui, type Locale } from '../lib/i18n';
+import { containerCode } from '../lib/iso6346';
+import Arrow from './Arrow.astro';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = ui[locale].projects;
+const products = (await getCollection('products', (p) => p.id.startsWith(`${locale}/`))).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<section id="projects" class="section products" aria-labelledby="projects-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="projects-title">{t.title}</h2>
+      <p>{t.intro}</p>
+    </div>
+
+    <div class="stack">
+      {
+        products.map((p, i) => {
+          const code = containerCode(p.data.owner, p.data.serial);
+          const slug = p.id.split('/')[1];
+          const interiorId = `cargo-${slug}`;
+          return (
+            <article id={`product-${slug}`} class:list={['unit', `is-${p.data.status}`]} data-unit data-autoopen={i === 0 ? '' : undefined} aria-labelledby={`${slug}-name`}>
+              <header class="unit-face">
+                <h3 id={`${slug}-name`} class="unit-name">{p.data.name}</h3>
+                <p class="unit-code data">{code}</p>
+                <p class="unit-status data">{t.status[p.data.status]}</p>
+                <button class="unit-toggle" type="button" aria-expanded="true" aria-controls={interiorId} data-open-label={t.open} data-close-label={t.close} hidden>
+                  <span class="handle" aria-hidden="true" />
+                  <span class="toggle-label">{t.close}</span>
+                </button>
+              </header>
+
+              <div class="unit-body">
+                <div class="interior" id={interiorId}>
+                  <div class="shot">
+                    {p.data.shot ? (
+                      <Image src={p.data.shot} alt={p.data.shotAlt ?? ''} widths={[480, 760, 1100]} sizes="(max-width: 56rem) 92vw, 45vw" />
+                    ) : (
+                      <p class="no-shot data">{t.noShot}</p>
+                    )}
+                  </div>
+                  <div class="manifest">
+                    <p class="summary">{p.data.summary}</p>
+                    <p class="cargo-title data">{t.cargo}</p>
+                    <ul class="cargo">
+                      {p.data.cargo.map((c) => <li>{c}</li>)}
+                    </ul>
+                    {p.data.url && (
+                      <a class="seal" href={p.data.url} rel="noopener">
+                        {p.data.linkLabel}
+                        <Arrow dir="out" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div class="doors" aria-hidden="true">
+                  <span class="door left">
+                    <span class="bars" />
+                    <span class="door-mark data">{code}</span>
+                  </span>
+                  <span class="door right">
+                    <span class="bars" />
+                    <span class="door-mark data">{t.status[p.data.status]}</span>
+                  </span>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function setOpen(unit: HTMLElement, open: boolean) {
+    const btn = unit.querySelector<HTMLButtonElement>('.unit-toggle');
+    const interior = unit.querySelector<HTMLElement>('.interior');
+    if (!btn || !interior) return;
+    unit.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    const label = btn.querySelector('.toggle-label');
+    if (label) label.textContent = open ? btn.dataset.closeLabel! : btn.dataset.openLabel!;
+    interior.inert = !open;
+  }
+
+  const units = document.querySelectorAll<HTMLElement>('[data-unit]');
+  units.forEach((unit) => {
+    const btn = unit.querySelector<HTMLButtonElement>('.unit-toggle');
+    if (!btn) return;
+    btn.hidden = false;
+    unit.classList.add('has-doors');
+    setOpen(unit, false);
+    btn.addEventListener('click', () => setOpen(unit, !unit.classList.contains('is-open')));
+  });
+
+  // Links from the quay strip open the container they point at.
+  const openFromHash = () => {
+    if (!location.hash) return;
+    const target = document.getElementById(location.hash.slice(1));
+    if (target?.matches('[data-unit]')) setOpen(target, true);
+  };
+  document.querySelectorAll<HTMLAnchorElement>('[data-open-unit]').forEach((a) => {
+    a.addEventListener('click', () => {
+      const unit = document.getElementById(a.dataset.openUnit!);
+      if (unit) setTimeout(() => setOpen(unit, true), 450);
+    });
+  });
+  openFromHash();
+
+  // The first container opens itself the first time it reaches the quay.
+  const first = document.querySelector<HTMLElement>('[data-unit][data-autoopen]');
+  if (first) {
+    if (reduce.matches || !('IntersectionObserver' in window)) {
+      setOpen(first, true);
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            setTimeout(() => setOpen(first, true), 250);
+            io.disconnect();
+          }
+        },
+        { threshold: 0.55 },
+      );
+      io.observe(first);
+    }
+  }
+</script>
+
+<style>
+  .products {
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+  .stack {
+    display: grid;
+    gap: clamp(1.25rem, 2.4vw, 2rem);
+  }
+
+  .unit {
+    --paint: var(--corrugation);
+    --frame: var(--box-dark);
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(14rem, 20rem) minmax(0, 1fr);
+    background: var(--frame);
+    border: 0.625rem solid var(--frame);
+    box-shadow: 0 1.25rem 2.5rem -1.75rem rgb(27 33 31 / 0.6);
+  }
+  .unit.is-development {
+    --frame: #232826;
+    --paint: repeating-linear-gradient(90deg, #343b38 0 1.375rem, #272d2a 1.375rem 1.875rem, #3a413e 1.875rem 2.75rem);
+  }
+  .unit.is-paused {
+    --frame: #9d9a91;
+    --paint: repeating-linear-gradient(90deg, #b8b5ab 0 1.375rem, #a9a69c 1.375rem 1.875rem, #bfbcb3 1.875rem 2.75rem);
+  }
+
+  /* left: the end wall with name, code, status, handle */
+  .unit-face {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .unit-name {
+    font-size: clamp(2.5rem, 4.4vw, 3.75rem);
+    line-height: 0.9;
+  }
+  .unit-code {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-top: auto;
+  }
+  .unit-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    border: 1.5px solid var(--on-dark-soft);
+    color: var(--paper);
+  }
+  .unit-status::before {
+    content: '';
+    width: 0.625rem;
+    height: 0.625rem;
+    border: 2px solid currentColor;
+  }
+  .is-live .unit-status {
+    border-color: var(--signal);
+  }
+  .is-live .unit-status::before {
+    background: var(--signal);
+    border-color: var(--signal);
+  }
+  .is-development .unit-status::before {
+    background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  }
+
+  .unit-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding: 0.5rem 1rem 0.5rem 0.75rem;
+    background: var(--paper);
+    color: var(--ink);
+    border: 2px solid var(--paper);
+    font: 800 1rem/1 var(--font-body);
+    font-stretch: 112%;
+    cursor: pointer;
+    transition: background-color 160ms var(--ease-out);
+  }
+  .unit-toggle[hidden] {
+    display: none;
+  }
+  .unit-toggle:hover {
+    background: var(--seal);
+    border-color: var(--seal);
+    color: var(--seal-ink);
+  }
+  /* the locking-bar handle: upright when locked, turned when open */
+  .handle {
+    flex: none;
+    width: 0.375rem;
+    height: 1.375rem;
+    background: currentColor;
+    margin-inline: 0.5rem;
+    transition: transform 420ms var(--ease-out);
+  }
+  .is-open .handle {
+    transform: rotate(90deg);
+  }
+
+  /* right: the side, with full-length doors over the cargo */
+  .unit-body {
+    position: relative;
+    perspective: 140rem;
+    min-height: 22rem;
+    background: var(--paper);
+  }
+  /* closed: every container stands at the same height */
+  .has-doors:not(.is-open) .unit-body {
+    min-height: 15rem;
+    overflow: hidden;
+    background: var(--frame);
+  }
+  .has-doors .doors {
+    grid-template-rows: 100%;
+  }
+  /* while closed, the code and status live on the door stencils (kept for assistive tech) */
+  .has-doors:not(.is-open) .unit-code,
+  .has-doors:not(.is-open) .unit-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  /* closed: the hidden cargo stops driving the height, so the doors match the end wall */
+  .has-doors:not(.is-open) .interior {
+    position: absolute;
+    inset: 0;
+  }
+  .interior {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    height: 100%;
+  }
+  .shot {
+    background: var(--ink-2);
+    padding: 1.25rem;
+    display: grid;
+    place-items: center;
+  }
+  .shot :global(img) {
+    width: 100%;
+    border: 2px solid var(--ink);
+  }
+  .no-shot {
+    color: var(--on-dark-soft);
+    font-size: 0.875rem;
+    text-align: center;
+    max-width: 22ch;
+  }
+  .manifest {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: clamp(1.25rem, 2.4vw, 2rem);
+  }
+  .summary {
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+  .cargo-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--paper-ink-soft);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.375rem;
+    margin-top: 0.5rem;
+  }
+  .cargo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .cargo li {
+    padding-block: 0.4rem;
+    border-bottom: 1px dashed var(--rule);
+    font-size: 0.9688rem;
+  }
+  .manifest .seal {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .doors {
+    display: none;
+  }
+  .has-doors .doors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform-style: preserve-3d;
+  }
+  .door {
+    position: relative;
+    background: var(--paint);
+    transition:
+      transform 1100ms var(--ease-out),
+      box-shadow 1100ms var(--ease-out);
+    backface-visibility: hidden;
+  }
+  .door.left {
+    transform-origin: left center;
+    border-right: 3px solid var(--frame);
+  }
+  .door.right {
+    transform-origin: right center;
+  }
+  .door-mark {
+    position: absolute;
+    top: 1rem;
+    padding: 0.3rem 0.55rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: clamp(0.75rem, 1.1vw, 0.9375rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .door.left .door-mark {
+    left: 1rem;
+  }
+  .door.right .door-mark {
+    right: 1rem;
+  }
+  .bars {
+    position: absolute;
+    inset: 1rem auto 1rem 50%;
+    width: 2.75rem;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(var(--ink-2), var(--ink-2)) 0.4rem 0 / 0.375rem 100% no-repeat,
+      linear-gradient(var(--ink-2), var(--ink-2)) right 0.4rem top 0 / 0.375rem 100% no-repeat;
+  }
+  .is-open .door.left {
+    transform: rotateY(-104deg);
+    box-shadow: -1.5rem 0 2.5rem -1rem rgb(0 0 0 / 0.35);
+  }
+  .is-open .door.right {
+    transform: rotateY(104deg);
+    box-shadow: 1.5rem 0 2.5rem -1rem rgb(0 0 0 / 0.35);
+  }
+  .is-open .doors {
+    visibility: hidden;
+    transition: visibility 0s linear 1100ms;
+  }
+  .doors {
+    transition: visibility 0s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .door,
+    .handle,
+    .is-open .doors {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 56rem) {
+    .unit {
+      grid-template-columns: 1fr;
+    }
+    .unit-face {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+    .unit-name {
+      grid-column: 1 / -1;
+    }
+    .unit-code {
+      margin: 0;
+    }
+    .unit-toggle {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+    .interior {
+      grid-template-columns: 1fr;
+    }
+    .unit-body {
+      min-height: 18rem;
+    }
+    .has-doors:not(.is-open) .unit-body {
+      min-height: 10.5rem;
+    }
+  }
+</style>

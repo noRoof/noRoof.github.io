@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T03:27:11+00:00",
+  "title": "Design System: noRoof development",
+  "extensions": {
+    "colorMeta": {
+      "seal": {
+        "role": "primary",
+        "displayName": "Seal Green",
+        "canonical": "#1fc83d",
+        "oklch": "oklch(72.7% 0.221 145)",
+        "tonalRamp": [
+          "oklch(15% 0.070 145)",
+          "oklch(26% 0.116 145)",
+          "oklch(38% 0.161 145)",
+          "oklch(49% 0.207 145)",
+          "oklch(61% 0.167 145)",
+          "oklch(72% 0.121 145)",
+          "oklch(84% 0.076 145)",
+          "oklch(95% 0.030 145)"
+        ]
+      },
+      "seal-press": {
+        "role": "primary",
+        "displayName": "Seal Press",
+        "canonical": "#19ad34",
+        "oklch": "oklch(65.2% 0.198 145)",
+        "tonalRamp": [
+          "oklch(15% 0.070 145)",
+          "oklch(26% 0.116 145)",
+          "oklch(38% 0.161 145)",
+          "oklch(49% 0.198 145)",
+          "oklch(61% 0.167 145)",
+          "oklch(72% 0.121 145)",
+          "oklch(84% 0.076 145)",
+          "oklch(95% 0.030 145)"
+        ]
+      },
+      "seal-ink": {
+        "role": "primary",
+        "displayName": "Seal Ink",
+        "canonical": "#0b1a10",
+        "oklch": "oklch(20.1% 0.029 154)",
+        "tonalRamp": [
+          "oklch(15% 0.029 154)",
+          "oklch(26% 0.029 154)",
+          "oklch(38% 0.029 154)",
+          "oklch(49% 0.029 154)",
+          "oklch(61% 0.029 154)",
+          "oklch(72% 0.029 154)",
+          "oklch(84% 0.029 154)",
+          "oklch(95% 0.029 154)"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "#49ee46",
+        "oklch": "oklch(83.4% 0.247 143)",
+        "tonalRamp": [
+          "oklch(15% 0.070 143)",
+          "oklch(26% 0.116 143)",
+          "oklch(38% 0.161 143)",
+          "oklch(49% 0.207 143)",
+          "oklch(61% 0.167 143)",
+          "oklch(72% 0.121 143)",
+          "oklch(84% 0.076 143)",
+          "oklch(95% 0.030 143)"
+        ]
+      },
+      "box": {
+        "role": "secondary",
+        "displayName": "Container Green",
+        "canonical": "#17803a",
+        "oklch": "oklch(52.7% 0.139 149)",
+        "tonalRamp": [
+          "oklch(15% 0.070 149)",
+          "oklch(26% 0.116 149)",
+          "oklch(38% 0.139 149)",
+          "oklch(49% 0.139 149)",
+          "oklch(61% 0.139 149)",
+          "oklch(72% 0.121 149)",
+          "oklch(84% 0.076 149)",
+          "oklch(95% 0.030 149)"
+        ],
+        "ribs": [
+          "#17803a",
+          "#126b30",
+          "#1a8f41"
+        ]
+      },
+      "box-dark": {
+        "role": "secondary",
+        "displayName": "Frame Green",
+        "canonical": "#126b30",
+        "oklch": "oklch(46.4% 0.122 149)",
+        "tonalRamp": [
+          "oklch(15% 0.070 149)",
+          "oklch(26% 0.116 149)",
+          "oklch(38% 0.122 149)",
+          "oklch(49% 0.122 149)",
+          "oklch(61% 0.122 149)",
+          "oklch(72% 0.121 149)",
+          "oklch(84% 0.076 149)",
+          "oklch(95% 0.030 149)"
+        ]
+      },
+      "box-light": {
+        "role": "secondary",
+        "displayName": "Rib Green",
+        "canonical": "#1a8f41",
+        "oklch": "oklch(57.1% 0.152 149)",
+        "tonalRamp": [
+          "oklch(15% 0.070 149)",
+          "oklch(26% 0.116 149)",
+          "oklch(38% 0.152 149)",
+          "oklch(49% 0.152 149)",
+          "oklch(61% 0.152 149)",
+          "oklch(72% 0.121 149)",
+          "oklch(84% 0.076 149)",
+          "oklch(95% 0.030 149)"
+        ]
+      },
+      "box-ink": {
+        "role": "secondary",
+        "displayName": "Container Text",
+        "canonical": "#f7f7f3",
+        "oklch": "oklch(97.5% 0.005 106)",
+        "tonalRamp": [
+          "oklch(15% 0.005 106)",
+          "oklch(26% 0.005 106)",
+          "oklch(38% 0.005 106)",
+          "oklch(49% 0.005 106)",
+          "oklch(61% 0.005 106)",
+          "oklch(72% 0.005 106)",
+          "oklch(84% 0.005 106)",
+          "oklch(95% 0.005 106)"
+        ]
+      },
+      "steel-charcoal": {
+        "role": "tertiary",
+        "displayName": "Charcoal Steel",
+        "canonical": "#343b38",
+        "oklch": "oklch(34.5% 0.011 168)",
+        "tonalRamp": [
+          "oklch(15% 0.011 168)",
+          "oklch(26% 0.011 168)",
+          "oklch(38% 0.011 168)",
+          "oklch(49% 0.011 168)",
+          "oklch(61% 0.011 168)",
+          "oklch(72% 0.011 168)",
+          "oklch(84% 0.011 168)",
+          "oklch(95% 0.011 168)"
+        ],
+        "ribs": [
+          "#343b38",
+          "#272d2a",
+          "#3a413e"
+        ]
+      },
+      "steel-charcoal-frame": {
+        "role": "tertiary",
+        "displayName": "Charcoal Steel Frame",
+        "canonical": "#232826",
+        "oklch": "oklch(27.1% 0.008 170)",
+        "tonalRamp": [
+          "oklch(15% 0.008 170)",
+          "oklch(26% 0.008 170)",
+          "oklch(38% 0.008 170)",
+          "oklch(49% 0.008 170)",
+          "oklch(61% 0.008 170)",
+          "oklch(72% 0.008 170)",
+          "oklch(84% 0.008 170)",
+          "oklch(95% 0.008 170)"
+        ]
+      },
+      "steel-quay": {
+        "role": "tertiary",
+        "displayName": "Quay-Grey Steel",
+        "canonical": "#b8b5ab",
+        "oklch": "oklch(77.3% 0.014 93)",
+        "tonalRamp": [
+          "oklch(15% 0.014 93)",
+          "oklch(26% 0.014 93)",
+          "oklch(38% 0.014 93)",
+          "oklch(49% 0.014 93)",
+          "oklch(61% 0.014 93)",
+          "oklch(72% 0.014 93)",
+          "oklch(84% 0.014 93)",
+          "oklch(95% 0.014 93)"
+        ],
+        "ribs": [
+          "#b8b5ab",
+          "#a9a69c",
+          "#bfbcb3"
+        ]
+      },
+      "steel-quay-frame": {
+        "role": "tertiary",
+        "displayName": "Quay-Grey Steel Frame",
+        "canonical": "#9d9a91",
+        "oklch": "oklch(68.6% 0.013 92)",
+        "tonalRamp": [
+          "oklch(15% 0.013 92)",
+          "oklch(26% 0.013 92)",
+          "oklch(38% 0.013 92)",
+          "oklch(49% 0.013 92)",
+          "oklch(61% 0.013 92)",
+          "oklch(72% 0.013 92)",
+          "oklch(84% 0.013 92)",
+          "oklch(95% 0.013 92)"
+        ]
+      },
+      "quay": {
+        "role": "neutral",
+        "displayName": "Quay Concrete",
+        "canonical": "#dcdad3",
+        "oklch": "oklch(88.8% 0.010 94)",
+        "tonalRamp": [
+          "oklch(15% 0.010 94)",
+          "oklch(26% 0.010 94)",
+          "oklch(38% 0.010 94)",
+          "oklch(49% 0.010 94)",
+          "oklch(61% 0.010 94)",
+          "oklch(72% 0.010 94)",
+          "oklch(84% 0.010 94)",
+          "oklch(95% 0.010 94)"
+        ]
+      },
+      "quay-deep": {
+        "role": "neutral",
+        "displayName": "Deep Quay",
+        "canonical": "#cfccc3",
+        "oklch": "oklch(84.5% 0.013 92)",
+        "tonalRamp": [
+          "oklch(15% 0.013 92)",
+          "oklch(26% 0.013 92)",
+          "oklch(38% 0.013 92)",
+          "oklch(49% 0.013 92)",
+          "oklch(61% 0.013 92)",
+          "oklch(72% 0.013 92)",
+          "oklch(84% 0.013 92)",
+          "oklch(95% 0.013 92)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Steel Charcoal",
+        "canonical": "#1b211f",
+        "oklch": "oklch(24.1% 0.010 173)",
+        "tonalRamp": [
+          "oklch(15% 0.010 173)",
+          "oklch(26% 0.010 173)",
+          "oklch(38% 0.010 173)",
+          "oklch(49% 0.010 173)",
+          "oklch(61% 0.010 173)",
+          "oklch(72% 0.010 173)",
+          "oklch(84% 0.010 173)",
+          "oklch(95% 0.010 173)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Charcoal 2",
+        "canonical": "#2a302d",
+        "oklch": "oklch(30.2% 0.010 164)",
+        "tonalRamp": [
+          "oklch(15% 0.010 164)",
+          "oklch(26% 0.010 164)",
+          "oklch(38% 0.010 164)",
+          "oklch(49% 0.010 164)",
+          "oklch(61% 0.010 164)",
+          "oklch(72% 0.010 164)",
+          "oklch(84% 0.010 164)",
+          "oklch(95% 0.010 164)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Charcoal 3",
+        "canonical": "#3b423f",
+        "oklch": "oklch(37.2% 0.011 168)",
+        "tonalRamp": [
+          "oklch(15% 0.011 168)",
+          "oklch(26% 0.011 168)",
+          "oklch(38% 0.011 168)",
+          "oklch(49% 0.011 168)",
+          "oklch(61% 0.011 168)",
+          "oklch(72% 0.011 168)",
+          "oklch(84% 0.011 168)",
+          "oklch(95% 0.011 168)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#4a524e",
+        "oklch": "oklch(43.0% 0.012 164)",
+        "tonalRamp": [
+          "oklch(15% 0.012 164)",
+          "oklch(26% 0.012 164)",
+          "oklch(38% 0.012 164)",
+          "oklch(49% 0.012 164)",
+          "oklch(61% 0.012 164)",
+          "oklch(72% 0.012 164)",
+          "oklch(84% 0.012 164)",
+          "oklch(95% 0.012 164)"
+        ]
+      },
+      "on-dark-soft": {
+        "role": "neutral",
+        "displayName": "Soft Light",
+        "canonical": "#b9c0bc",
+        "oklch": "oklch(80.1% 0.010 161)",
+        "tonalRamp": [
+          "oklch(15% 0.010 161)",
+          "oklch(26% 0.010 161)",
+          "oklch(38% 0.010 161)",
+          "oklch(49% 0.010 161)",
+          "oklch(61% 0.010 161)",
+          "oklch(72% 0.010 161)",
+          "oklch(84% 0.010 161)",
+          "oklch(95% 0.010 161)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Manifest Paper",
+        "canonical": "#f7f7f3",
+        "oklch": "oklch(97.5% 0.005 106)",
+        "tonalRamp": [
+          "oklch(15% 0.005 106)",
+          "oklch(26% 0.005 106)",
+          "oklch(38% 0.005 106)",
+          "oklch(49% 0.005 106)",
+          "oklch(61% 0.005 106)",
+          "oklch(72% 0.005 106)",
+          "oklch(84% 0.005 106)",
+          "oklch(95% 0.005 106)"
+        ]
+      },
+      "paper-ink-soft": {
+        "role": "neutral",
+        "displayName": "Paper Grey",
+        "canonical": "#55605a",
+        "oklch": "oklch(47.8% 0.017 162)",
+        "tonalRamp": [
+          "oklch(15% 0.017 162)",
+          "oklch(26% 0.017 162)",
+          "oklch(38% 0.017 162)",
+          "oklch(49% 0.017 162)",
+          "oklch(61% 0.017 162)",
+          "oklch(72% 0.017 162)",
+          "oklch(84% 0.017 162)",
+          "oklch(95% 0.017 162)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Ruling",
+        "canonical": "#b8b5ab",
+        "oklch": "oklch(77.3% 0.014 93)",
+        "tonalRamp": [
+          "oklch(15% 0.014 93)",
+          "oklch(26% 0.014 93)",
+          "oklch(38% 0.014 93)",
+          "oklch(49% 0.014 93)",
+          "oklch(61% 0.014 93)",
+          "oklch(72% 0.014 93)",
+          "oklch(84% 0.014 93)",
+          "oklch(95% 0.014 93)"
+        ]
+      },
+      "error-ink": {
+        "role": "neutral",
+        "displayName": "Error Ink",
+        "canonical": "#9b2c1f",
+        "oklch": "oklch(46.3% 0.149 30)",
+        "tonalRamp": [
+          "oklch(15% 0.070 30)",
+          "oklch(26% 0.116 30)",
+          "oklch(38% 0.149 30)",
+          "oklch(49% 0.149 30)",
+          "oklch(61% 0.149 30)",
+          "oklch(72% 0.121 30)",
+          "oklch(84% 0.076 30)",
+          "oklch(95% 0.030 30)"
+        ]
+      },
+      "error-wash": {
+        "role": "neutral",
+        "displayName": "Error Wash",
+        "canonical": "#fbeeec",
+        "oklch": "oklch(95.9% 0.014 28)",
+        "tonalRamp": [
+          "oklch(15% 0.014 28)",
+          "oklch(26% 0.014 28)",
+          "oklch(38% 0.014 28)",
+          "oklch(49% 0.014 28)",
+          "oklch(61% 0.014 28)",
+          "oklch(72% 0.014 28)",
+          "oklch(84% 0.014 28)",
+          "oklch(95% 0.014 28)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline stencilled on the container side; final line at 0.62em."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles (h2)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Station verbs, pillar titles; product and industry names scale around it."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "The single partnership line under the process headline."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Bill-of-lading opener and section intros."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default prose, 52-62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Rail links, form labels, service names, footer captions; uppercase."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Seal and toggle labels."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "ISO 6346 codes, numbers, column heads, status, plates, stamp."
+      }
+    },
+    "surfaces": [
+      {
+        "name": "corrugation",
+        "value": "repeating-linear-gradient(90deg, #17803a 0 1.375rem, #126b30 1.375rem 1.875rem, #1a8f41 1.875rem 2.75rem)",
+        "purpose": "Container steel: 1.375rem rib, 0.5rem frame-green groove, 0.875rem light rib. Status variants swap the three paints."
+      }
+    ],
+    "borders": [
+      {
+        "name": "frame",
+        "value": "0.625rem solid (frame colour)",
+        "purpose": "Stack containers; hero 0.875rem/0.625rem; strip 0.375rem."
+      },
+      {
+        "name": "structural",
+        "value": "3px solid #1b211f",
+        "purpose": "Quay line, band edges, station rail, door seam."
+      },
+      {
+        "name": "document",
+        "value": "2px solid #1b211f",
+        "purpose": "Paper sheets, seal, toggle, chips, table/list heads."
+      },
+      {
+        "name": "plate",
+        "value": "1.5px solid",
+        "purpose": "Language plates, field dividers, status chip."
+      },
+      {
+        "name": "ruled",
+        "value": "1px dashed #b8b5ab",
+        "purpose": "Rows on paper, station dividers."
+      }
+    ],
+    "shadows": [
+      {
+        "name": "ground",
+        "value": "0 1.25rem 2.5rem -1.75rem rgb(27 33 31 / 0.6)",
+        "purpose": "Containers and slip resting on the quay."
+      },
+      {
+        "name": "sheet",
+        "value": "0 1rem 2rem -1.5rem rgb(27 33 31 / 0.45)",
+        "purpose": "Manifest sheet and contact form."
+      },
+      {
+        "name": "plate-on-charcoal",
+        "value": "0 1.5rem 3rem -2rem rgb(0 0 0 / 0.8)",
+        "purpose": "Approval plate on the dark band."
+      },
+      {
+        "name": "lift",
+        "value": "0 0.75rem 1.25rem -0.75rem rgb(27 33 31 / 0.6)",
+        "purpose": "Strip container hover with translateY(-3px)."
+      },
+      {
+        "name": "door-swing",
+        "value": "±1.5rem 0 2.5rem -1rem rgb(0 0 0 / 0.35)",
+        "purpose": "Cast by an open door."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve."
+      },
+      {
+        "name": "state",
+        "value": "160ms",
+        "purpose": "Colour/background changes, seal press."
+      },
+      {
+        "name": "nudge",
+        "value": "220ms",
+        "purpose": "Arrow slide (3px), strip lift."
+      },
+      {
+        "name": "handle",
+        "value": "420ms",
+        "purpose": "Locking-bar handle rotates 90deg."
+      },
+      {
+        "name": "door-swing",
+        "value": "1100ms, rotateY(±104deg), perspective 140rem",
+        "purpose": "Container doors open from outer hinges; doors hidden after the swing."
+      },
+      {
+        "name": "auto-open",
+        "value": "55% visible + 250ms",
+        "purpose": "First product container opens itself once; strip links open their target after 450ms."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none; first unit starts open; no smooth scroll",
+        "purpose": "prefers-reduced-motion: reduce."
+      }
+    ],
+    "focus": {
+      "value": "3px solid #1fc83d, offset 3px (fields: inset -3px)",
+      "purpose": "Global focus ring in Seal Green."
+    },
+    "breakpoints": [
+      {
+        "name": "xs",
+        "value": "26rem"
+      },
+      {
+        "name": "form-stack",
+        "value": "30rem"
+      },
+      {
+        "name": "stations-1",
+        "value": "36rem"
+      },
+      {
+        "name": "table-stack",
+        "value": "48rem"
+      },
+      {
+        "name": "one-column",
+        "value": "56rem"
+      },
+      {
+        "name": "rail-wrap",
+        "value": "60rem"
+      },
+      {
+        "name": "stations-2",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Seal",
+      "kind": "button",
+      "refersTo": "seal",
+      "description": "The one action: Seal Green, Seal Ink, 2px ink border, square, arrow slides on hover.",
+      "html": "<a class=\"ds-seal\" href=\"#\">Hablemos<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 10h12M11 5l5 5-5 5\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-seal{display:inline-flex;align-items:center;justify-content:space-between;gap:1.25rem;min-height:3rem;padding:.75rem 1.25rem;background:var(--seal,#1fc83d);color:var(--seal-ink,#0b1a10);border:2px solid var(--ink,#1b211f);border-radius:0;font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;font-size:1.125rem;font-weight:800;font-stretch:112%;text-decoration:none;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1),transform 160ms cubic-bezier(0.16,1,0.3,1)}.ds-seal:hover{background:var(--seal-press,#19ad34)}.ds-seal:active{transform:translateY(1px)}.ds-seal svg{flex:none;transition:transform 220ms cubic-bezier(0.16,1,0.3,1)}.ds-seal:hover svg{transform:translateX(3px)}.ds-seal:focus-visible{outline:3px solid var(--seal,#1fc83d);outline-offset:3px}"
+    },
+    {
+      "name": "Text Link (secondary)",
+      "kind": "button",
+      "refersTo": "seal",
+      "description": "Secondary action: bold underlined text with a direction arrow.",
+      "html": "<a class=\"ds-secondary\" href=\"#\">Ver productos<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"M10 3v12M5 11l5 5 5-5\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-secondary{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;color:var(--ink,#1b211f);font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;font-weight:700;text-decoration:underline;text-decoration-thickness:.09em;text-underline-offset:.22em}.ds-secondary:focus-visible{outline:3px solid #1fc83d;outline-offset:3px}"
+    },
+    {
+      "name": "Rail",
+      "kind": "nav",
+      "refersTo": "rail",
+      "description": "Sticky charcoal gantry rail: labels, ES/EN plates, compact seal.",
+      "html": "<header class=\"ds-rail\"><span class=\"ds-rail-brand\">noRoof</span><nav class=\"ds-rail-links\"><a href=\"#\">Productos</a><a href=\"#\">Cómo trabajamos</a><a href=\"#\">Experiencia</a></nav><div class=\"ds-plates\"><span class=\"ds-plate is-current\">ES</span><a class=\"ds-plate\" href=\"#\">EN</a></div><a class=\"ds-rail-seal\" href=\"#\">Hablemos</a></header>",
+      "css": ".ds-rail{display:flex;align-items:center;gap:1.5rem;min-height:4rem;padding:0 1.5rem;background:#1b211f;color:#f7f7f3;border-bottom:3px solid #3b423f;font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-rail-brand{font-weight:800}.ds-rail-links{display:flex;gap:1.5rem;margin-left:auto;font-size:.8125rem;font-weight:650;font-stretch:112%;letter-spacing:.04em;text-transform:uppercase}.ds-rail-links a{color:#b9c0bc;text-decoration:none;transition:color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-rail-links a:hover{color:#f7f7f3;text-decoration:underline;text-decoration-color:#49ee46}.ds-plates{display:flex;border:1.5px solid #3b423f;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.8125rem;font-weight:700}.ds-plate{display:grid;place-items:center;min-width:2.75rem;min-height:2.25rem;color:#b9c0bc;text-decoration:none}a.ds-plate:hover{color:#f7f7f3;background:#2a302d}.ds-plate.is-current{background:#f7f7f3;color:#1b211f}.ds-rail-seal{display:inline-grid;place-items:center;min-height:2.5rem;padding:0 1rem;background:#1fc83d;color:#0b1a10;font-weight:800;font-stretch:112%;text-decoration:none}.ds-rail-seal:hover{background:#19ad34}"
+    },
+    {
+      "name": "Bill of Lading",
+      "kind": "card",
+      "refersTo": "bill-of-lading",
+      "description": "Paper document with mono title, ruled dt/dd rows, struck 'clientes' and a seal at the foot.",
+      "html": "<aside class=\"ds-bill\"><p class=\"ds-bill-title\">Conocimiento de embarque</p><p class=\"ds-bill-lead\">Somos una consultora de software de Montevideo.</p><dl class=\"ds-bill-rows\"><div><dt>Embarcador</dt><dd>noRoof · Montevideo, UY</dd></div><div><dt>Consignatario</dt><dd><s>clientes</s> socios</dd></div></dl><a class=\"ds-seal\" href=\"#\">Hablemos<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 10h12M11 5l5 5-5 5\" stroke=\"currentColor\" stroke-width=\"2.25\" stroke-linecap=\"square\"/></svg></a></aside>",
+      "css": ".ds-bill{display:flex;flex-direction:column;gap:1rem;max-width:23rem;padding:1.5rem;background:#f7f7f3;color:#1b211f;border:2px solid #1b211f;font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-bill-title{margin:0;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding-bottom:.625rem;border-bottom:2px solid #1b211f}.ds-bill-lead{margin:0;font-size:1.1875rem;line-height:1.35;font-weight:600;font-stretch:96%}.ds-bill-rows{margin:0;display:grid}.ds-bill-rows div{display:grid;grid-template-columns:6.75rem 1fr;gap:.75rem;padding-block:.4rem;border-bottom:1px dashed #b8b5ab}.ds-bill-rows dt{font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.75rem;text-transform:uppercase;color:#55605a}.ds-bill-rows dd{margin:0;font-size:.9375rem;font-weight:600}.ds-bill-rows s{color:#55605a;font-weight:400;text-decoration-thickness:2px}.ds-seal{display:inline-flex;align-items:center;justify-content:space-between;gap:1.25rem;min-height:3.5rem;padding:.75rem 1.25rem;background:#1fc83d;color:#0b1a10;border:2px solid #1b211f;font-size:1.25rem;font-weight:800;font-stretch:112%;text-decoration:none;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-seal:hover{background:#19ad34}"
+    },
+    {
+      "name": "Product Container (doors)",
+      "kind": "custom",
+      "refersTo": "unit-face",
+      "description": "Signature unit: charcoal end wall with toggle, corrugated doors that swing open in 3D (rotateY ±104deg, 1100ms); reduced motion opens instantly.",
+      "html": "<article class=\"ds-unit\"><header class=\"ds-unit-face\"><h3>noRoof Biz</h3><p class=\"ds-unit-status\">En producción</p><button class=\"ds-unit-toggle\" type=\"button\" onclick=\"this.closest('.ds-unit').classList.toggle('is-open')\"><span class=\"ds-handle\"></span>Abrir puertas</button></header><div class=\"ds-unit-body\"><div class=\"ds-manifest\">Tienda online y panel de gestión.</div><div class=\"ds-doors\" aria-hidden=\"true\"><span class=\"ds-door ds-left\"><span class=\"ds-door-mark\">NRBU 100201 5</span></span><span class=\"ds-door ds-right\"><span class=\"ds-door-mark\">En producción</span></span></div></div></article>",
+      "css": ".ds-unit{display:grid;grid-template-columns:14rem 1fr;background:#126b30;border:.625rem solid #126b30;box-shadow:0 1.25rem 2.5rem -1.75rem rgb(27 33 31/.6);font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-unit-face{display:flex;flex-direction:column;gap:.75rem;padding:1.5rem;background:#1b211f;color:#f7f7f3}.ds-unit-face h3{margin:0;font-family:'Big Shoulders Stencil Variable','Arial Narrow',sans-serif;text-transform:uppercase;line-height:.9;font-weight:850;font-size:2.5rem}.ds-unit-status{margin:0;align-self:flex-start;display:inline-flex;gap:.5rem;align-items:center;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.8125rem;font-weight:700;text-transform:uppercase;padding:.3rem .6rem;border:1.5px solid #49ee46}.ds-unit-status::before{content:'';width:.625rem;height:.625rem;background:#49ee46}.ds-unit-toggle{display:inline-flex;align-items:center;gap:.75rem;min-height:3rem;padding:.5rem 1rem .5rem .75rem;background:#f7f7f3;color:#1b211f;border:2px solid #f7f7f3;border-radius:0;font:800 1rem/1 inherit;font-stretch:112%;cursor:pointer;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-unit-toggle:hover{background:#1fc83d;border-color:#1fc83d;color:#0b1a10}.ds-unit-toggle:focus-visible{outline:3px solid #1fc83d;outline-offset:3px}.ds-handle{width:.375rem;height:1.375rem;background:currentColor;margin-inline:.5rem;transition:transform 420ms cubic-bezier(0.16,1,0.3,1)}.is-open .ds-handle{transform:rotate(90deg)}.ds-unit-body{position:relative;perspective:140rem;min-height:15rem;background:#f7f7f3}.ds-manifest{padding:1.5rem}.ds-doors{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;pointer-events:none;transform-style:preserve-3d}.ds-door{position:relative;background:repeating-linear-gradient(90deg, #17803a 0 1.375rem, #126b30 1.375rem 1.875rem, #1a8f41 1.875rem 2.75rem);transition:transform 1100ms cubic-bezier(0.16,1,0.3,1),box-shadow 1100ms cubic-bezier(0.16,1,0.3,1);backface-visibility:hidden}.ds-left{transform-origin:left center;border-right:3px solid #126b30}.ds-right{transform-origin:right center}.ds-door-mark{position:absolute;top:1rem;padding:.3rem .55rem;background:#1b211f;color:#f7f7f3;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.8125rem;font-weight:700;text-transform:uppercase;white-space:nowrap}.ds-left .ds-door-mark{left:1rem}.ds-right .ds-door-mark{right:1rem}.is-open .ds-left{transform:rotateY(-104deg);box-shadow:-1.5rem 0 2.5rem -1rem rgb(0 0 0/.35)}.is-open .ds-right{transform:rotateY(104deg);box-shadow:1.5rem 0 2.5rem -1rem rgb(0 0 0/.35)}@media (prefers-reduced-motion:reduce){.ds-door,.ds-handle{transition:none}}"
+    },
+    {
+      "name": "Strip Containers (status paint)",
+      "kind": "chip",
+      "refersTo": "mini-live",
+      "description": "Mini containers painted by real status: live green, development charcoal, paused quay grey.",
+      "html": "<div class=\"ds-strip\"><a class=\"ds-mini\" href=\"#\"><span class=\"ds-mini-name\">noRoof Biz</span><span class=\"ds-mini-meta\">NRBU 100201 5<br>En producción</span></a><a class=\"ds-mini is-dev\" href=\"#\"><span class=\"ds-mini-name\">Sport Club</span><span class=\"ds-mini-meta\">NRSU 100302 2<br>En desarrollo</span></a><a class=\"ds-mini is-paused\" href=\"#\"><span class=\"ds-mini-name\">Coolturus</span><span class=\"ds-mini-meta\">NRCU 100403 2<br>En pausa</span></a></div>",
+      "css": ".ds-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.ds-mini{--paint:repeating-linear-gradient(90deg, #17803a 0 1.375rem, #126b30 1.375rem 1.875rem, #1a8f41 1.875rem 2.75rem);--frame:#126b30;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;min-height:5.5rem;padding:.75rem 1rem;background:var(--paint);border:.375rem solid var(--frame);color:#f7f7f3;text-decoration:none;transition:transform 220ms cubic-bezier(0.16,1,0.3,1),box-shadow 220ms cubic-bezier(0.16,1,0.3,1)}.ds-mini:hover{transform:translateY(-3px);box-shadow:0 .75rem 1.25rem -.75rem rgb(27 33 31/.6)}.ds-mini:focus-visible{outline:3px solid #1fc83d;outline-offset:3px}.ds-mini.is-dev{--frame:#232826;--paint:repeating-linear-gradient(90deg,#343b38 0 1.375rem,#272d2a 1.375rem 1.875rem,#3a413e 1.875rem 2.75rem)}.ds-mini.is-paused{--frame:#9d9a91;--paint:repeating-linear-gradient(90deg,#b8b5ab 0 1.375rem,#a9a69c 1.375rem 1.875rem,#bfbcb3 1.875rem 2.75rem);color:#1b211f}.ds-mini-name{font-family:'Big Shoulders Stencil Variable','Arial Narrow',sans-serif;text-transform:uppercase;line-height:.9;font-weight:900;font-size:1.75rem}.ds-mini-meta{padding:.3rem .5rem;background:#1b211f;color:#f7f7f3;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.75rem;font-weight:700;text-transform:uppercase;text-align:right;white-space:nowrap}"
+    },
+    {
+      "name": "Manifest Table",
+      "kind": "card",
+      "refersTo": "manifest-sheet",
+      "description": "Paper sheet with mono heads closed by 2px ink, dashed ruled rows, stencil industry.",
+      "html": "<div class=\"ds-sheet\"><table><thead><tr><th>Ítem</th><th>Industria</th><th>Tecnologías</th></tr></thead><tbody><tr><td class=\"ds-item\">001</td><th class=\"ds-industry\">Fintech</th><td class=\"ds-stack\">Angular · Grails · MySQL</td></tr><tr><td class=\"ds-item\">002</td><th class=\"ds-industry\">Salud</th><td class=\"ds-stack\">—</td></tr></tbody></table></div>",
+      "css": ".ds-sheet{background:#f7f7f3;border:2px solid #1b211f;box-shadow:0 1rem 2rem -1.5rem rgb(27 33 31/.45);font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-sheet table{width:100%;border-collapse:collapse}.ds-sheet thead th{text-align:left;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#55605a;padding:.75rem 1rem;border-bottom:2px solid #1b211f}.ds-sheet td,.ds-sheet tbody th{text-align:left;vertical-align:top;padding:1.125rem 1rem}.ds-sheet tbody tr+tr>*{border-top:1px dashed #b8b5ab}.ds-sheet tbody tr{transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-sheet tbody tr:hover{background:#eeeee8}.ds-item{font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.875rem;font-weight:700;color:#55605a}.ds-industry{font-family:'Big Shoulders Stencil Variable','Arial Narrow',sans-serif;text-transform:uppercase;line-height:.9;font-size:1.75rem;font-weight:850;line-height:1}.ds-stack{font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.8125rem;color:#55605a}"
+    },
+    {
+      "name": "Form Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Ruled paper cell: uppercase Archivo label over a borderless input; focus washes the cell and draws a 3px seal outline inside.",
+      "html": "<form class=\"ds-form\"><label class=\"ds-field ds-half\"><span>Nombre</span><input name=\"n\"></label><label class=\"ds-field ds-half\"><span>Email</span><input type=\"email\" name=\"e\" required></label><label class=\"ds-field\"><span>Mensaje</span><textarea rows=\"3\"></textarea></label></form>",
+      "css": ".ds-form{display:grid;grid-template-columns:1fr 1fr;background:#f7f7f3;border:2px solid #1b211f;font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-field{grid-column:1/-1;display:grid;gap:.25rem;padding:.75rem 1rem .5rem;border-bottom:1.5px solid #1b211f;transition:background-color 160ms cubic-bezier(0.16,1,0.3,1)}.ds-half{grid-column:span 1}.ds-half+.ds-half{border-left:1.5px solid #1b211f}.ds-field span{font-size:.75rem;font-weight:700;font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;color:#55605a}.ds-field input,.ds-field textarea{width:100%;border:0;background:transparent;color:#1b211f;font:500 1.0625rem/1.5 inherit;padding:.25rem 0;min-height:2.25rem}.ds-field input:focus,.ds-field textarea:focus{outline:none}.ds-field:focus-within{background:#eef6ef}.ds-field:has(:focus-visible){outline:3px solid #1fc83d;outline-offset:-3px}.ds-field:has(:user-invalid){background:#fbeeec}.ds-field:has(:user-invalid) span{color:#9b2c1f}"
+    },
+    {
+      "name": "Stations",
+      "kind": "custom",
+      "refersTo": "title",
+      "description": "Process line: gantry beam, 3px ink rail with hollow square markers, mono stop, stencil verb.",
+      "html": "<div class=\"ds-line\"><div class=\"ds-gantry\"></div><p class=\"ds-gantry-label\">Ingeniería de software con IA en toda la línea</p><ol class=\"ds-stations\"><li><p class=\"ds-stop\">01</p><h3>Entender</h3><p class=\"ds-service\">Consultoría de soluciones</p></li><li><p class=\"ds-stop\">02</p><h3>Diseñar</h3><p class=\"ds-service\">Desarrollo front-end</p></li></ol></div>",
+      "css": ".ds-line{background:#cfccc3;padding:1.5rem;font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;color:#1b211f}.ds-gantry{height:.75rem;background:#1b211f}.ds-gantry-label{display:inline-block;margin:0;padding:.4rem .75rem;background:#1b211f;color:#f7f7f3;font-weight:700;font-size:.9375rem;font-stretch:108%}.ds-stations{list-style:none;margin:2rem 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);border-top:3px solid #1b211f}.ds-stations li{position:relative;padding:1.75rem 1rem 0 0;display:grid;gap:.625rem}.ds-stations li+li{padding-left:1rem;border-left:1px dashed #b8b5ab}.ds-stations li::before{content:'';position:absolute;top:-.6rem;left:0;width:1rem;height:1rem;background:#cfccc3;border:3px solid #1b211f}.ds-stations li+li::before{left:1rem}.ds-stop{margin:0;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.875rem;font-weight:700;color:#4a524e}.ds-stations h3{margin:0;font-family:'Big Shoulders Stencil Variable','Arial Narrow',sans-serif;text-transform:uppercase;line-height:.9;font-weight:850;font-size:2.25rem}.ds-service{margin:0;font-size:.75rem;font-weight:750;letter-spacing:.04em;text-transform:uppercase}"
+    },
+    {
+      "name": "Slip with Stamp",
+      "kind": "card",
+      "refersTo": "stamp",
+      "description": "Thanks/404 paper slip: stencil title, seal home, mono code and a -8deg rubber stamp.",
+      "html": "<div class=\"ds-slip\"><h1>Mensaje recibido</h1><p>Gracias por escribirnos.</p><div class=\"ds-slip-foot\"><p class=\"ds-code\">NRDU 000200 2</p><p class=\"ds-stamp\">Recibido</p></div></div>",
+      "css": ".ds-slip{display:grid;gap:1.25rem;max-width:40rem;padding:2.5rem;background:#f7f7f3;color:#1b211f;border:2px solid #1b211f;box-shadow:0 1.25rem 2.5rem -1.75rem rgb(27 33 31/.6);font-family:'Archivo Variable','Helvetica Neue',Arial,sans-serif;}.ds-slip h1{margin:0;font-family:'Big Shoulders Stencil Variable','Arial Narrow',sans-serif;text-transform:uppercase;line-height:.9;font-weight:850;font-size:3.5rem}.ds-slip>p{margin:0;font-size:1.1875rem;color:#55605a}.ds-slip-foot{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:2px solid #1b211f}.ds-code{margin:0;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:.875rem;font-weight:700}.ds-stamp{margin:0;padding:.4rem .9rem;border:3px solid #17803a;color:#17803a;font-family:'Red Hat Mono',ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums;letter-spacing:.02em;font-size:1.25rem;font-weight:700;text-transform:uppercase;transform:rotate(-8deg)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quay Yard",
+    "overview": "noroof.dev is a container yard on the Montevideo quay. Quay concrete is the ground, steel charcoal is the ink, the cargo is corrugated container steel in the logo's green, and the paperwork is off-white manifest stock with dashed ruled rows. Services, products and industries are not presented as cards. They are cargo: stacked as containers, routed through gantry stations, declared on a manifest, and sealed. The page reads as a working yard in which every element has a physical counterpart.\n\nDensity is industrial but legible: large stencilled names, heavy 2–3px ink lines, square steel edges, and plenty of quay between the stacks. Depth comes from the objects themselves (frames, corner castings, doors that swing on hinges) and from soft ground shadows under objects that sit on the quay. Ornament has to correspond to a real yard object. Green is split by job: the container steel greens are cargo paint, and one brighter green, the seal, is the only accent and marks every action.\n\nThe world rejects the agency template of a split hero over a grid of icon cards. Its own composition is a container side with a bill of lading on its door end, a quay line, and the stack.",
+    "keyCharacteristics": [
+      "Corrugated container steel, drawn as a repeating gradient, is the world's own surface.",
+      "One action colour, the seal green; everything clickable that commits is a seal.",
+      "Square steel: no radius anywhere.",
+      "Three typefaces with strict jobs: stencil for cargo names, Archivo for prose, Red Hat Mono for codes and declared data.",
+      "Paper documents (bill of lading, manifest, approval plate, slip) carry 2px ink borders and dashed ruled rows.",
+      "Container paint encodes real status: green is live, charcoal is in development, quay grey is paused.",
+      "The signature interaction is a pair of container doors that swing open in CSS 3D. With reduced motion they open with no animation."
+    ],
+    "rules": [
+      {
+        "name": "The One Seal Rule",
+        "body": "Seal Green is the only accent and is spent only on actions, focus and selection. Container greens are cargo paint and never mark an action. Seal Green never paints a container.",
+        "section": "colors"
+      },
+      {
+        "name": "The Honest Paint Rule",
+        "body": "A container's paint states its product's real status: green steel is live, charcoal steel is in development, quay-grey steel is on hold. Paint is never picked for variety.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stencil-Is-Cargo Rule",
+        "body": "The stencil face is reserved for names painted on cargo and for headings (h1–h3, product names, industries). It is always uppercase and never used for prose, labels or buttons.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clerk's Hand Rule",
+        "body": "Red Hat Mono appears only where a clerk would type: codes, numbers, column heads, declared fields, status and stamps. Using it for prose or as decoration breaks the manifest.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ground-Shadow Rule",
+        "body": "Shadows only pool beneath objects resting on the quay, with negative spread and a downward offset. They are never hard, never offset to the side as decoration, and never used without the object's border or frame.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do make every committing action a seal (Seal Green, Seal Ink, 2px ink border, square), and keep Seal Green for actions, focus and selection only.",
+      "Do paint containers by real status: green corrugation when live, charcoal when in development, quay grey when on hold.",
+      "Do build steel surfaces from the corrugation gradient (1.375 / 0.5 / 0.875rem ribs) inside a frame in that paint's darker frame colour.",
+      "Do put documents on Manifest Paper with a 2px ink border, a mono title closed by a 2px ink rule, and 1px dashed Ruling between rows.",
+      "Do set ISO 6346 codes, numbers, column heads and status in Red Hat Mono with tabular numerals.",
+      "Do bound bands and axes with 3px ink lines, and align sections to the quay line.",
+      "Do honour `prefers-reduced-motion`: drop transitions and show the end state (open doors, no smooth scroll).",
+      "Do keep state transitions at 160ms, small movements at 220ms and the door swing at 1100ms, all on cubic-bezier(0.16, 1, 0.3, 1)."
+    ],
+    "donts": [
+      "Don't round any corner; the system is 0px throughout.",
+      "Don't introduce a second accent hue, use Seal Green as container paint, or use container greens to mark actions.",
+      "Don't fall back to a split hero over a grid of icon cards; present work as cargo (containers, stations, manifest rows).",
+      "Don't use hard offset shadows or side-cast decorative shadows; only the ground shadow pools beneath objects, and only a swinging door casts sideways.",
+      "Don't set prose, labels or buttons in the stencil face, or set prose in mono.",
+      "Don't add glyph or pictogram icons; the stroked arrow is the only icon.",
+      "Don't hide a closed container's code or status; the doors repeat them.",
+      "Don't rotate anything but the stamp."
+    ]
+  }
+}

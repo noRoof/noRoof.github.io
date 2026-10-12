@@ -1,0 +1,159 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/whitefulllogo.png';
+import { ui, homePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+  otherPath: string;
+}
+const { locale, otherPath } = Astro.props;
+const t = ui[locale];
+const home = homePath(locale);
+const links = [
+  { href: `${home}#projects`, label: t.nav.projects },
+  { href: `${home}#process`, label: t.nav.process },
+  { href: `${home}#past-experience`, label: t.nav.experience },
+  { href: `${home}#why-us`, label: t.nav.why },
+];
+---
+
+<header class="rail">
+  <div class="rail-inner wrap">
+    <a class="brand" href={home} aria-label="noRoof development">
+      <Image src={logo} alt="" width={168} densities={[1, 2]} loading="eager" />
+    </a>
+    <nav class="links" aria-label={t.nav.label}>
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <div class="actions">
+      <div class="plates data" role="group" aria-label={t.nav.langLabel}>
+        <span class="plate is-current" aria-current="true" lang={locale}>{locale.toUpperCase()}</span>
+        <a class="plate" href={otherPath} hreflang={locale === 'es' ? 'en' : 'es'} lang={locale === 'es' ? 'en' : 'es'}>
+          {locale === 'es' ? 'EN' : 'ES'}
+        </a>
+      </div>
+      <a class="rail-seal" href={`${home}#contact`}>{t.nav.contact}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--ink);
+    color: var(--paper);
+    border-bottom: 3px solid var(--ink-3);
+  }
+  .rail-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: var(--rail-h);
+  }
+  .brand {
+    display: block;
+    flex: none;
+    padding-block: 0.5rem;
+  }
+  .brand :global(img) {
+    width: 9.5rem;
+  }
+  .links {
+    display: flex;
+    gap: clamp(1rem, 2.2vw, 2rem);
+    margin-left: auto;
+    font-size: 0.8125rem;
+    font-weight: 650;
+    font-stretch: 112%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .links a {
+    text-decoration: none;
+    color: var(--on-dark-soft);
+    padding-block: 0.5rem;
+    transition: color 160ms var(--ease-out);
+  }
+  .links a:hover {
+    color: var(--paper);
+    text-decoration: underline;
+    text-decoration-color: var(--signal);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .plates {
+    display: flex;
+    border: 1.5px solid var(--ink-3);
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+  .plate {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    min-height: 2.25rem;
+    color: var(--on-dark-soft);
+    text-decoration: none;
+  }
+  a.plate:hover {
+    color: var(--paper);
+    background: var(--ink-2);
+  }
+  .plate.is-current {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .rail-seal {
+    display: inline-grid;
+    place-items: center;
+    min-height: 2.5rem;
+    padding: 0 1rem;
+    background: var(--seal);
+    color: var(--seal-ink);
+    font-weight: 800;
+    font-stretch: 112%;
+    text-decoration: none;
+    border: 1.5px solid var(--seal);
+    transition: background-color 160ms var(--ease-out);
+  }
+  .rail-seal:hover {
+    background: var(--signal);
+  }
+
+  @media (max-width: 60rem) {
+    .rail-inner {
+      flex-wrap: wrap;
+      row-gap: 0;
+    }
+    .actions {
+      margin-left: auto;
+    }
+    .links {
+      order: 3;
+      width: 100%;
+      margin: 0;
+      flex-wrap: wrap;
+      column-gap: 1.25rem;
+      row-gap: 0;
+      border-top: 1px solid var(--ink-3);
+      padding-block: 0.25rem;
+    }
+    .links a {
+      white-space: nowrap;
+    }
+  }
+  @media (max-width: 26rem) {
+    .brand :global(img) {
+      width: 7.5rem;
+    }
+    .rail-seal {
+      padding: 0 0.75rem;
+    }
+  }
+</style>

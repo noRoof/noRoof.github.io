@@ -1,0 +1,173 @@
+---
+import { ui, thanksPath, type Locale } from '../lib/i18n';
+import Arrow from './Arrow.astro';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = ui[locale].contact;
+const next = new URL(thanksPath(locale), Astro.site ?? 'https://noroof.dev').href;
+---
+
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+  <div class="wrap contact-grid">
+    <div class="section-head">
+      <h2 id="contact-title">{t.title}</h2>
+      <p>{t.intro}</p>
+      <p class="email">
+        {t.emailLead} <a href="mailto:hi@noroof.dev">hi@noroof.dev</a>
+      </p>
+    </div>
+
+    <form class="form" action="https://formspree.io/f/mbjkrvnz" method="post" data-form>
+      <div class="field half">
+        <label for="name" >{t.fields.name}</label>
+        <input id="name" name="name" type="text" required maxlength="250" autocomplete="name" />
+      </div>
+      <div class="field half">
+        <label for="email" >{t.fields.email}</label>
+        <input id="email" name="_replyto" type="email" required maxlength="250" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="subject" >{t.fields.subject}</label>
+        <input id="subject" name="subject" type="text" required maxlength="250" />
+      </div>
+      <div class="field">
+        <label for="message" >{t.fields.message}</label>
+        <textarea id="message" name="message" rows="6" required maxlength="2500"></textarea>
+      </div>
+      <input type="hidden" name="_next" value={next} />
+      <input type="hidden" name="_language" value={locale} />
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true" />
+      <div class="form-foot">
+        <button class="seal" type="submit" data-sending={t.sending}>
+          <span class="label">{t.submit}</span>
+          <Arrow />
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-form]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const label = btn?.querySelector('.label');
+      if (!btn || !label) return;
+      btn.setAttribute('aria-disabled', 'true');
+      btn.classList.add('is-sending');
+      label.textContent = btn.dataset.sending ?? label.textContent;
+    });
+  });
+</script>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .email {
+    color: var(--ink) !important;
+    font-weight: 600;
+  }
+  .email a {
+    text-decoration-color: var(--box);
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: 0 1rem 2rem -1.5rem rgb(27 33 31 / 0.45);
+  }
+  .field {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem 0.5rem;
+    border-bottom: 1.5px solid var(--ink);
+    transition: background-color 160ms var(--ease-out);
+  }
+  .field.half {
+    grid-column: span 1;
+  }
+  .field.half + .field.half {
+    border-left: 1.5px solid var(--ink);
+  }
+  .field:focus-within {
+    background: #eef6ef;
+  }
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-stretch: 112%;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--paper-ink-soft);
+  }
+  input,
+  textarea {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: 500 1.0625rem/1.5 var(--font-body);
+    padding: 0.25rem 0;
+    min-height: 2.25rem;
+    resize: vertical;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+  .field:has(:focus-visible) {
+    outline: 3px solid var(--seal);
+    outline-offset: -3px;
+  }
+  .field:has(:user-invalid) {
+    background: #fbeeec;
+  }
+  .field:has(:user-invalid) label {
+    color: #9b2c1f;
+  }
+  .form-foot {
+    grid-column: 1 / -1;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .form-foot .seal {
+    min-width: 14rem;
+    min-height: 3.5rem;
+    font-size: 1.1875rem;
+  }
+  .seal.is-sending {
+    opacity: 0.75;
+    cursor: progress;
+  }
+
+  @media (max-width: 56rem) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact .section-head {
+      margin-bottom: 0;
+    }
+  }
+  @media (max-width: 30rem) {
+    .field.half {
+      grid-column: 1 / -1;
+    }
+    .field.half + .field.half {
+      border-left: 0;
+    }
+    .form-foot .seal {
+      width: 100%;
+    }
+  }
+</style>

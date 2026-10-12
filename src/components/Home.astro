@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from './Hero.astro';
+import Products from './Products.astro';
+import Process from './Process.astro';
+import Experience from './Experience.astro';
+import Why from './Why.astro';
+import Contact from './Contact.astro';
+import type { Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<Base locale={locale}>
+  <Hero locale={locale} />
+  <Products locale={locale} />
+  <Process locale={locale} />
+  <Experience locale={locale} />
+  <Why locale={locale} />
+  <Contact locale={locale} />
+</Base>

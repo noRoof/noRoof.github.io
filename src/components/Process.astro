@@ -1,0 +1,175 @@
+---
+import { getCollection, render } from 'astro:content';
+import { ui, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = ui[locale].process;
+const services = (await getCollection('services', (s) => s.id.startsWith(`${locale}/`))).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const rendered = await Promise.all(services.map(async (s) => ({ s, Content: (await render(s)).Content })));
+---
+
+<section id="process" class="section process" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="process-title">{t.title}</h2>
+      <blockquote class="quote">{t.quote}</blockquote>
+      <p>{t.intro}</p>
+    </div>
+
+    <div class="line">
+      <div class="gantry" aria-hidden="true"></div>
+      <p class="gantry-label">{t.gantry}</p>
+      <ol class="stations">
+        {
+          rendered.map(({ s, Content }) => (
+            <li class="station">
+              <p class="stop data" aria-hidden="true">
+                {String(s.data.order).padStart(2, '0')}
+              </p>
+              <h3>
+                <span class="visually-hidden">{t.stationLabel} {s.data.order}: </span>
+                {s.data.verb}
+              </h3>
+              <p class="service">{s.data.title}</p>
+              <div class="text">
+                <Content />
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--quay-deep);
+    border-block: 3px solid var(--ink);
+  }
+  .quote {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    font-weight: 700;
+    font-stretch: 92%;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+
+  .line {
+    position: relative;
+  }
+  /* the crane gantry spans every station */
+  .gantry {
+    height: 0.75rem;
+    background: var(--ink);
+  }
+  .gantry-label {
+    display: inline-block;
+    margin: 0;
+    padding: 0.4rem 0.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-stretch: 108%;
+  }
+
+  .stations {
+    list-style: none;
+    margin: clamp(2rem, 4vw, 3rem) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    border-top: 3px solid var(--ink);
+  }
+  .station {
+    position: relative;
+    padding: 1.75rem clamp(0.75rem, 1.6vw, 1.5rem) 0 0;
+    display: grid;
+    align-content: start;
+    gap: 0.625rem;
+  }
+  .station + .station {
+    padding-left: clamp(0.75rem, 1.6vw, 1.5rem);
+    border-left: 1px dashed var(--rule);
+  }
+  .station::before {
+    content: '';
+    position: absolute;
+    top: -0.6rem;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    background: var(--quay-deep);
+    border: 3px solid var(--ink);
+  }
+  .station + .station::before {
+    left: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+  .stop {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .station h3 {
+    font-size: clamp(2.25rem, 3.4vw, 3rem);
+  }
+  .service {
+    font-size: 0.75rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    hyphens: manual;
+    text-wrap: balance;
+  }
+  .text :global(p) {
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 64rem) {
+    .stations {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 2.5rem;
+      border-top: 0;
+    }
+    .station,
+    .station + .station {
+      padding: 1.5rem 0 0;
+      border-left: 0;
+      border-top: 3px solid var(--ink);
+    }
+    .station::before,
+    .station + .station::before {
+      left: 0;
+    }
+    .station:nth-child(even) {
+      padding-left: 1.5rem;
+    }
+    .station:nth-child(even)::before {
+      left: 1.5rem;
+    }
+  }
+  @media (max-width: 36rem) {
+    .stations {
+      grid-template-columns: 1fr;
+    }
+    .station:nth-child(even) {
+      padding-left: 0;
+    }
+    .station:nth-child(even)::before {
+      left: 0;
+    }
+  }
+</style>

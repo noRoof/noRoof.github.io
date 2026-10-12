@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://noroof.dev/sitemap-index.xml

@@ -1,0 +1,138 @@
+---
+import { getCollection, render } from 'astro:content';
+import { ui, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = ui[locale].why;
+const pillars = (await getCollection('pillars', (p) => p.id.startsWith(`${locale}/`))).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const rows = await Promise.all(pillars.map(async (p) => ({ p, Content: (await render(p)).Content })));
+---
+
+<section id="why-us" class="section why" aria-labelledby="why-title">
+  <div class="wrap why-grid">
+    <div class="section-head">
+      <h2 id="why-title">{t.title}</h2>
+      <p>{t.intro}</p>
+    </div>
+
+    <div class="plate">
+      <ul class="pillars">
+        {
+          rows.map(({ p, Content }) => (
+            <li>
+              <h3>{p.data.title}</h3>
+              <Content />
+            </li>
+          ))
+        }
+      </ul>
+      <div class="inspection">
+        <p class="label">{t.inspection}</p>
+        <ul>
+          {t.checks.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: start;
+  }
+  .why .section-head {
+    position: sticky;
+    top: calc(var(--rail-h) + 2rem);
+  }
+  .why .section-head p {
+    color: var(--on-dark-soft);
+  }
+
+  /* stamped approval plate */
+  .plate {
+    position: relative;
+    padding: clamp(1.75rem, 3.5vw, 3rem);
+    background: var(--paper);
+    color: var(--ink);
+    border: 2px solid var(--paper);
+    box-shadow: 0 1.5rem 3rem -2rem rgb(0 0 0 / 0.8);
+  }
+
+  .pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pillars li {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 0.5rem 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .pillars li:first-child {
+    padding-top: 0.25rem;
+  }
+  .pillars h3 {
+    font-size: clamp(1.625rem, 2.4vw, 2rem);
+    line-height: 0.95;
+  }
+  .pillars :global(p) {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .inspection {
+    margin-top: 1.75rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .inspection > p {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    font-stretch: 112%;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--paper-ink-soft);
+  }
+  .inspection ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .inspection li {
+    padding: 0.35rem 0.75rem;
+    border: 2px solid var(--ink);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-stretch: 108%;
+  }
+
+  @media (max-width: 60rem) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    .why .section-head {
+      position: static;
+      margin-bottom: 0;
+    }
+    .pillars li {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

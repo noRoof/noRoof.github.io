@@ -1,5 +1,23 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+
+# impeccable local state
+.impeccable/config.local.json
+.impeccable/live/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/

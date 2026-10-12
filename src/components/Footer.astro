@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/whitefulllogo.png';
+import { ui, homePath, type Locale } from '../lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = ui[locale];
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href={homePath(locale)} aria-label="noRoof development">
+        <Image src={logo} alt="" width={200} densities={[1, 2]} />
+      </a>
+      <p>{t.footer.line}</p>
+    </div>
+    <nav aria-label={t.footer.products} class="foot-links">
+      <p>{t.footer.products}</p>
+      <a href="https://biz.noroof.dev" rel="noopener">noRoof Biz</a>
+      <a href={`${homePath(locale)}#projects`}>noRoof Sport Club</a>
+      <a href="https://coolturus.com" rel="noopener">Coolturus</a>
+    </nav>
+    <div class="foot-contact">
+      <a href="mailto:hi@noroof.dev" class="mail">hi@noroof.dev</a>
+      <p class="small">© {year} {t.footer.rights}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    background: var(--ink);
+    color: var(--paper);
+    border-top: 3px solid var(--ink-3);
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .foot-brand :global(img) {
+    width: 12rem;
+  }
+  .foot-brand p {
+    margin-top: 1rem;
+    color: var(--on-dark-soft);
+  }
+  .foot-links {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+  }
+  .foot-links p {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-stretch: 112%;
+    color: var(--on-dark-soft);
+  }
+  .foot a {
+    text-decoration-color: var(--signal);
+  }
+  .foot a:hover {
+    color: var(--signal);
+  }
+  .foot-contact {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+  }
+  .mail {
+    font-weight: 700;
+    font-size: 1.0625rem;
+  }
+  .small {
+    font-size: 0.8125rem;
+    color: var(--on-dark-soft);
+  }
+  @media (max-width: 48rem) {
+    .foot-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
